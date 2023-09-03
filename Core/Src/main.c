@@ -100,7 +100,11 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	int data = 80 * sin(HAL_GetTick() / 3.14 / 100.0) + 175;
+	double t = HAL_GetTick() / 1000.0;
+	const double gain = 80.0;
+	const double offset = 175.0;
+	int data = gain * sin(t) + offset;
+
 	__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, data);
 	printf("HAL_GetTick = %d.", HAL_GetTick());
   }
